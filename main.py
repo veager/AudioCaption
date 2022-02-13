@@ -4,7 +4,7 @@ import torch
 import torchaudio
 import glob
 import shutil
-from moviepy.editor import *
+import moviepy.editor as mpy
 
 torch.set_num_threads(1)
 
@@ -34,7 +34,7 @@ def ExtractAudio(video_path):
         # audio path
         audio_path = video_path.replace(video_suffix, '.wav')
         # read video, and extract the audio
-        audio = VideoFileClip(video_path).audio
+        audio = mpy.VideoFileClip(video_path).audio
         # save audio file
         audio.write_audiofile(audio_path)
 
